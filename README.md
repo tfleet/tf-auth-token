@@ -2,8 +2,6 @@
 
 Hooks into the laravel auth module and provides an auth token upon success. This token is really only secure in https environment. This main purpose for this module was to provide an auth token to javascript web app which could be used to identify users on api calls.
 
-[![Build Status](https://travis-ci.org/tappleby/laravel-auth-token.png?branch=master)](https://travis-ci.org/tappleby/laravel-auth-token)
-
 Upgrading to Laravel 4.1?, see the [breaking changes](#changes) 
 
 ## Getting Started
@@ -14,28 +12,28 @@ Add the package to your `composer.json`
 
     "require": {
 		...
-        "tappleby/laravel-auth-token": "0.3.*"
+        "tfleet/laravel-auth-token": "0.3.*"
     }
 
 Add the service provider to `app/config/app.php`
 
-	'Tappleby\AuthToken\AuthTokenServiceProvider',
+	'tfleet\AuthToken\AuthTokenServiceProvider',
 	
 Setup the optional aliases in `app/config/app.php`
 
-	'AuthToken' => 'Tappleby\Support\Facades\AuthToken',
-    'AuthTokenNotAuthorizedException' => 'Tappleby\AuthToken\Exceptions\NotAuthorizedException'
+	'AuthToken' => 'TFleet\Support\Facades\AuthToken',
+    'AuthTokenNotAuthorizedException' => 'TFleet\AuthToken\Exceptions\NotAuthorizedException'
     
 Currently the auth tokens are stored in the database, you will need to run the migrations:
 
-	php artisan migrate --package=tappleby/laravel-auth-token
+	php artisan migrate --package=tfleet/laravel-auth-token
 	
 ##### Optional configuration
 
 This package defaults to using email as the username field to validate against, this can be changed via the package configuration.
 
-1. Publish the configuration `php artisan config:publish tappleby/laravel-auth-token`
-2. Edit the `format_credentials` closure in `app/config/packages/tappleby/laravel-auth-token/config.php`
+1. Publish the configuration `php artisan config:publish tfleet/laravel-auth-token`
+2. Edit the `format_credentials` closure in `app/config/packages/tfleet/laravel-auth-token/config.php`
 
 Example - Only validate active users and check the username column instead of email:
 
@@ -53,9 +51,9 @@ You can read more about the laravel Auth module here: [Authenticating Users](htt
 
 A default controller is provided to grant, check and revoke tokens. Add the following to `app/routes.php`
 
-	Route::get('auth', 'Tappleby\AuthToken\AuthTokenController@index');
-	Route::post('auth', 'Tappleby\AuthToken\AuthTokenController@store');
-	Route::delete('auth', 'Tappleby\AuthToken\AuthTokenController@destroy');
+	Route::get('auth', 'Tfleet\AuthToken\AuthTokenController@index');
+	Route::post('auth', 'Tfleet\AuthToken\AuthTokenController@store');
+	Route::delete('auth', 'Tfleet\AuthToken\AuthTokenController@destroy');
 	
 
 ### CORS Support
