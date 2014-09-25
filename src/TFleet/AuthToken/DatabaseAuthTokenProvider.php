@@ -110,6 +110,11 @@ class DatabaseAuthTokenProvider extends AbstractAuthTokenProvider {
     // Todo: try to get it from the module config file...
     $tokenValidity = \Config::get('app.token_validity');
 
+    if (!$tokenValidity) {
+        // default is one day
+        $tokenValidity = 86400 ;
+    }
+
     // check if the token is expired.
     if ( ($now - $tokenTimeStamp) > $tokenValidity  ) {
         return null;
