@@ -1,0 +1,31 @@
+{
+    "name": "tfleet/tf-auth-token",
+    "description": "Auth token management",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TF",
+            "email": "devops@tripfiller.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "~4.1"
+    },
+
+    "require-dev": {
+      "mockery/mockery": "0.8.*",
+      "phpunit/phpunit": "3.7.*"
+    },
+
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "TFleet\\AuthToken": "src/",
+            "TFleet\\Support": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
