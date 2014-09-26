@@ -2,7 +2,9 @@
 
 Hooks into the laravel auth module and provides an auth token upon success. This token is really only secure in https environment. This main purpose for this module was to provide an auth token to javascript web app which could be used to identify users on api calls.
 
-Upgrading to Laravel 4.1?, see the [breaking changes](#changes) 
+Upgrading to Laravel 4.1?, see the [breaking changes](#changes)
+
+Based on https://github.com/tappleby/laravel-auth-token.
 
 ## Getting Started
 
@@ -12,7 +14,7 @@ Add the package to your `composer.json`
 
     "require": {
 		...
-        "tfleet/laravel-auth-token": "0.3.*"
+        "tfleet/tf-auth-token": "dev-master"
     }
 
 Add the service provider to `app/config/app.php`
@@ -26,7 +28,7 @@ Setup the optional aliases in `app/config/app.php`
     
 Currently the auth tokens are stored in the database, you will need to run the migrations:
 
-	php artisan migrate --package=tfleet/laravel-auth-token
+	php artisan migrate --package=tfleet/tf-auth-token
 	
 ##### Optional configuration
 
@@ -149,6 +151,10 @@ Some apps might already be using the traditional laravel based auth. The followi
 The `AuthToken::publicToken` method prepares the auth token to be sent to the browser.
 
 ## Changes
+
+*dev-master*
+- Added token expiration parameter, token are only valide for a given period of time.
+- Added user-agent support, a token is now linked to a user and a user agent. Each device can have is own token for the same user.
 
 *0.3.0*
 
