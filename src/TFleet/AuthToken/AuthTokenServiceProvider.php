@@ -14,7 +14,7 @@ class AuthTokenServiceProvider extends ServiceProvider
 
 	public function boot()
 	{
-		$this->package('tfleet/laravel-auth-token');
+		$this->package('tfleet/tf-auth-token');
 		$this->app['router']->filter('auth.token', 'tfleet.auth.token.filter');
 	}
 

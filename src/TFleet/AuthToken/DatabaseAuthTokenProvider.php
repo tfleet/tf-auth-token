@@ -108,7 +108,7 @@ class DatabaseAuthTokenProvider extends AbstractAuthTokenProvider {
     $tokenTimeStamp = strtotime($res->created_at,null);
 
     // Todo: try to get it from the module config file...
-    $tokenValidity = \Config::get('app.token_validity');
+    $tokenValidity = \Config::get('tf-auth-token::config.token_validity');
 
     if (!$tokenValidity) {
         // default is one day
